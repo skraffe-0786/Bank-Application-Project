@@ -28,7 +28,7 @@ urlpatterns = [
     path('Transfer',Transfer,name="Transfer"),
     path('view_Transcation',View_Transaction),
     path('CheckBalance', Check_Balance),
-    path('register',Register),
+    path('',Register),
     path('login',Login,name="login-page"),
     path('Home-page',Home,name="Home"),
     path('logout',logout_view,name="logout")

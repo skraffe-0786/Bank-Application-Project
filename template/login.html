@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN-PAGE </title>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+</head>
+
+
+<body>
+    <form action="" method="post">
+
+        <div class="page">
+            <img src="{% static 'register.png.png' %}" id="image">
+            
+            <div class="form">
+                <div class="login">
+                    <b>LOGIN FORM :</b>
+
+                    <p>Email :</p>
+                    
+                    <i class="bi bi-envelope" id=" email"></i>
+                    <input   class="bi bi-envelope"       type="email" placeholder="enter email" id="mail" required name="email">
+                    <p>Password :</p>
+                    <input type="password" required placeholder="enter correct password" id="mail" name="password">
+                    <div class="error">
+                        {{error}}
+                    </div>
+                    <button type="submit" id="btn">LOGIN NOW</button>
+                    <p id="or">or</p>
+                    <div class="foot">
+                        <a href="http://127.0.0.1:8000/register" id="create"> ?  Create Account</a>
+                    </div>  
+                   
+
+                </div>
+                
+            </div>
+        </div>
+
+    </form>
+
+</body>
+
+</html>

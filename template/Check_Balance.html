@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHECK-BALANCE-PAGE</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'check.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+</head>
+
+<body>
+    <div class="dash">
+        <div class="board">
+            <i class="bi bi-bank" id="icon"></i>
+            <span>MyBank</span>
+        </div>
+        <ul>
+            <li>
+                <a href="http://127.0.0.1:8000/Home-page">
+                    <i class="bi bi-house-door"></i>
+                    Dashboard
+
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-download"></i>
+                    Deposit
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-upload"></i>
+                    Withdraw
+
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Transfer
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-wallet2"></i>
+                    Check Balance
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-receipt"></i>
+                    view Transcations
+
+
+                </a>
+            </li>
+               <li>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <div class="lot">
+                        <button type="submit" id="btnn">
+                            <i class="bi bi-box-arrow-left"></i>
+                                Logout
+                        </button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+        <img src="{% static 'image1.png' %}" id="image">
+        
+     
+    </div>
+    <div class="balance">
+        <div class="check">
+            <div class="page">
+                <div class="icon">
+                    <i class="bi bi-wallet2"></i>
+                </div>
+                <h3>CHECK BALANCES</h3>
+                <p>View Your Current Account Balance </p>
+            </div>
+            {% for account in user_accounts %}
+            <table>
+                <th>Username</th>
+                <th>Account number</th>
+                <th>Amount</th>
+                <tr>
+                    <td>{{ account.User_id  }}</td>
+                    <td>{{ account.Account_number }}</td>
+                    <td>{{ account.Current_Balance }}</td>
+
+                </tr>
+            </table>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEPOSIT-PAGE</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'deposit.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="dash">
+        <div class="board">
+            <i class="bi bi-bank" id="icon"></i>
+            <span>MyBank</span>
+        </div>
+        <ul>
+            <li>
+                <a href="http://127.0.0.1:8000/Home-page">
+                    <i class="bi bi-house-door"></i>
+                    Dashboard
+
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-download"></i>
+                    Deposit
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-upload"></i>
+                    Withdraw
+
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Transfer
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-wallet2"></i>
+                    Check Balance
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-receipt"></i>
+                    view Transactions
+
+
+                </a>
+            </li>
+            <li>
+                <form method="post" action="{% url 'logout' %}" id="form">
+                    {% csrf_token %}
+                    <div class="lot">
+                        <button type="submit" id="btnn">
+                            <i class="bi bi-box-arrow-left"></i>
+                            Logout
+                        </button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+        <img src="{% static 'image1.png' %}" id="image">
+
+
+
+    </div>
+            {% if messages %}
+                {% for message in messages %}</div>
+                    <div class="success">
+                        <i class="bi bi-check-circle-fill"></i>
+                            {{message}}
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+    <div class="dep">
+
+        <div class="form">
+
+            <div class="Deposite">
+
+
+                <div class="page">
+                    <div class="icon">
+                        <i class="bi bi-download"></i>
+                    </div>
+                    <h3>DEPOSIT</h3>
+                    <p>Add Money To Your Account Securely</p>
+                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="details">
+                        <p>Account Number :</p>
+                        <div class="account" id="num">{{ account_number }}</div>
+                        <p>Deposite :</p>
+                        <input type="" id="select" required placeholder="Enter Amount" name="Amount">
+
+
+
+                        <button type="submit" id="btn" class="bi bi-download">
+                            Deposit Now
+                        </button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color:#080B1F;
+    
+}
+#image{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+}
+.icon{
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    padding: 5px;
+    border-radius: 90%;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.form{
+    display: flex;
+    justify-content: center;
+    margin-right: 30px;
+    height:75vh;
+   background-color:#2b3049;
+   border-radius: 18px;
+   width: 70vw;
+   box-shadow: 0 5px 10px rgb(0,0,0,15);
+   padding: 20px;
+   color: whitesmoke;
+   
+}
+.Deposite{
+    font-size: 20px;
+    height: 25vw;
+    padding: 15px;
+    
+}
+#select{
+    width: 65vw;
+    padding: 15px;
+    background-color: #0B1228;
+    color: #fff;
+    font-size: 20px;
+}
+#num{
+    background-color: #080B1F;
+    width: 15vw;
+}
+#btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    background-color: #123cba;
+    padding: 15px;
+    color: #fff;
+    border-radius: 10px;
+    gap: 20px;
+    width: 70vw;
+    font-size: 20px;
+}
+a{
+    text-decoration: none;
+}
+#btn:hover{
+    background-color: #2d5bff;
+}
+.account{
+    background-color: #123cba;
+    padding: 10px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.dash{
+    width:20vw;
+    height:100vh;
+    background:#00021d;
+    color:white;
+    position:fixed;
+    left:0;
+    top:0;
+    display:flex;
+    flex-direction:column;
+}
+
+.board{
+    font-size:32px;
+    font-weight:bold;
+    padding:30px;
+    border-bottom:1px solid rgb(0, 19, 194);
+}
+
+.board i{
+    margin-right:10px;
+}
+
+ul{
+    list-style:none;
+    margin-top:25px;
+}
+
+ul li{
+    margin:8px 15px;
+}
+
+ul li a{
+    color:white;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    border-radius:10px;
+    font-size:18px;
+    
+}
+
+ul li a:hover{
+    background:rgb(147, 0, 147);
+}   
+
+
+.dash{
+    display: flex;
+}
+
+
+#btnn{
+    color: white;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:10px;
+    border-radius: 10px;
+    
+    font-size:18px;
+    width: 15vw;
+    
+    background-color: #08002e;
+    
+}
+#btnn:hover{
+    
+    background-color: purple;
+}   
+.dep{
+    display: flex;
+    justify-content: end;
+    margin-top: 2%;
+}
+
+.success{
+    background-color: #e8f8ee;
+    color: #16803c;
+    border: 1px solid  #a8dfbb;
+    padding: 12px 18px ;
+    margin-bottom: 20px;
+    font-weight: 600;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    height: 30%;
+}

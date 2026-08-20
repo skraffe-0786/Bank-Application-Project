@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY BANK</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="dash">
+        <div class="board">
+            <i class="bi bi-bank" id="icon"></i>
+            <span>MyBank</span>
+        </div>
+        <ul>
+            <li>
+                <a href="http://127.0.0.1:8000/Home-page">
+                    <i class="bi bi-house-door"></i>
+                    Dashboard
+
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-download"></i>
+                    Deposit
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-upload"></i>
+                    Withdraw
+
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Transfer
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-wallet2"></i>
+                    Check Balance
+
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-receipt"></i>
+                    view Transactions
+
+
+                </a>
+            </li>
+            <li>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <div class="lot">
+                        <button type="submit" id="btnn">
+                            <i class="bi bi-box-arrow-left"></i>
+                            Logout
+                        </button>
+                    </div>
+                </form>
+            </li>
+
+        </ul>
+
+
+        <img src="{% static 'image1.png' %}" id="image">
+
+
+
+    </div>
+
+    <div class="home">
+        <div class="deat">
+            <div class="dt">
+                <div class="cars">
+                    <div class="left">
+                        <h4 id="wel">Welcome Back ,</h4>
+                        <b id="user">{{ username }}</b>
+                        <p>Manage your account and transactions securely and easily</p>
+                        <img src="{% static 'details.jpeg'  %} " class="details-image">
+                    </div>
+
+                    <div class="right">
+                        <div class="info">
+                            <li class="bi bi-person-fill"></li>
+                            <div>
+                                <p class="label">Username</p>
+                                <p class="value">{{ username }}</p>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <li class="bi bi-person-vcard" id="account"></li>
+
+                            <div>
+                                <p class="label">Account Number</p>
+                                <p class="value">{{ account_number}}</p>
+                            </div>
+                        </div>
+                        <div class="info">
+                        
+                            
+                            </div>
+                            <div>
+                                <p class="label">Current Balance</p>
+                                <p class="value" id="balance">{{ Current_Balance }} 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="details">
+                <div class="slide">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="bi bi-download"></i>
+                        </div>
+                        <h3>DEPOSIT</h3>
+                        <p id="para">Add money to your account</p>
+                        <a href="http://127.0.0.1:8000/Deposit" id="bt" class="bi bi-download">Deposit Now</a>
+                    </div>
+                    <div class="card">
+                        <div class="icons">
+                            <i class="bi bi-upload"></i>
+                        </div>
+                        <h3>WITHDRAW</h3>
+                        <p id="para">Withdraw money from Account</p>
+                        <a href="http://127.0.0.1:8000/Withdraw" id="with" class="bi bi-upload">Withdraw Now</a>
+                    </div>
+                    <div class="card">
+                        <div class="ico">
+                            <i class="bi bi-arrow-left-right"></i>
+                        </div>
+                        <h3>TRANSFER</h3>
+                        <p id="para">Transfer money to another account</p>
+                        <a href="http://127.0.0.1:8000/Transfer" id="trans" class="bi bi-arrow-left-right">Transfer
+                            Now</a>
+                    </div>
+                    <div class="card">
+                        <div class="logo">
+                            <i class="bi bi-wallet2"></i>
+                        </div>
+                        <h3>CHECK BALANCE</h3>
+                        <p id="para">View your current account balance </p>
+                        <a href="http://127.0.0.1:8000/CheckBalance" id="btn" class="bi bi-wallet2">Check Balance</a>
+                    </div>
+                    <div class="card">
+                        <div class="i">
+                            <i class="bi bi-receipt"></i>
+                        </div>
+                        <h3>VIEW TRANSACTIONS</h3>
+                        <p id="para">View your Transcations History</p>
+                        <a href="http://127.0.0.1:8000/view_Transcation" id="view" class="bi bi-receipt">View
+                            Transcations</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

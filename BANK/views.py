@@ -19,7 +19,7 @@ def Deposit(request):
         amount=request.POST.get('Amount')
         print(amount)
         messages.success(
-            request,f"Successfully {amount} credited to your account! money"
+            request,f"Successfully {amount} credited to your account!"
         )
         user= request.user
         account=User_Account.objects.get(User_id=user)
@@ -180,6 +180,7 @@ def View_Transaction(request):
         user=request.user
         transcation=Transcations.objects.filter(
             User_id=user
+            
         )
         details={
             'transfer':transcation

@@ -26,7 +26,7 @@ urlpatterns = [
     path('Deposit',Deposit,name='Deposit-page'),
     path('Withdraw',Withdraw,name="withdraw"),
     path('Transfer',Transfer,name="Transfer"),
-    path('view_Transcation',View_Transaction),
+    path('view_Transaction',View_Transaction),
     path('CheckBalance', Check_Balance),
     path('',Register),
     path('login',Login,name="login-page"),

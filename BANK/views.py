@@ -186,7 +186,7 @@ def View_Transaction(request):
         }
         print(details,"-----------------")
         
-        return render(request,'view-transcation.html',context=details)
+        return render(request,'view-transaction.html',context=details)
         
     
 

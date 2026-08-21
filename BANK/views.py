@@ -185,7 +185,7 @@ def View_Transaction(request):
         details={
             'transfer':transcation
         }
-        print(details,"-----------------")
+        print(transcation.values(),"-----------------")
         
         return render(request,'view-transaction.html',context=details)
         

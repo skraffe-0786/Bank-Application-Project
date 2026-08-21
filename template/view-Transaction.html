@@ -97,6 +97,7 @@
                             <th> To Account Username</th>
                             <th>To Account</th>
                             <th>Amount</th>
+                            <th>type</th>
                             {% for detail in transfer %}
                                 <tr>
                                     <td>{{ detail.User_id }}</td>
@@ -104,6 +105,7 @@
                                     <td>{{ detail.To_Acc.User_id }}</td>
                                     <td>{{ detail.To_Acc.Account_number }}</td>
                                     <td>{{ detail.Amount }}</td>
+                                    <td>{{ detail.Type }}</td>
                                 </tr>
 
                             {% endfor %}

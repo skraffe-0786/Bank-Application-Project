@@ -35,7 +35,7 @@
             </li>
             <li>
                 <a href="http://127.0.0.1:8000/Withdraw">
-                
+
                     <i class="bi bi-upload"></i>
                     Withdraw
 
@@ -44,7 +44,7 @@
             </li>
             <li>
                 <a href="http://127.0.0.1:8000/Transfer">
-                
+
                     <i class="bi bi-arrow-left-right"></i>
                     Transfer
 
@@ -65,14 +65,14 @@
 
                 </a>
             </li>
-            
+
             <li>
                 <form method="post" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <div class="lot">
                         <button type="submit" id="btnn">
                             <i class="bi bi-box-arrow-left"></i>
-                                Logout
+                            Logout
                         </button>
                     </div>
                 </form>
@@ -80,7 +80,7 @@
         </ul>
         <img src="{% static 'image1.png' %}" id="image">
     </div>
-  
+
     <form action="" method="post">
         <div class="depos">
             <div class="form">
@@ -94,17 +94,22 @@
                     </div>
                     <div class="details">
                         <p>From Account :</p>
-                        <div class="num">
+                        <div class="num" id="number">
                             {{ account_number }}
                         </div>
 
                         </button>
                         <p>To Account :</p>
 
-                        <input type="" id="select" required placeholder="Enter Amount" name="To_account">
-                        <button type="search" class="bi bi-search"></button>
+                        <input type="text" id="too_account" required placeholder="Enter Amount" name="To_account">
+                        <button type="search" id="search">
+                            <i class="bi bi-search" ></i>
+                        </button>
+                        {{error}}
+                        <div id="receiver_name"></div>
                         <p>Amount :</p>
-                        <input type="" required placeholder="Enter Amount" id="select" name="transfer_amount">
+                        <input type="number" required placeholder="Enter Amount" id="select" name="transfer_amount">
+                        {{error}}
                         <button type="submit" class="bi bi-arrow-left-right" id="btn">
 
                             Transfer Now
@@ -115,6 +120,7 @@
             </div>
         </div>
     </form>
+    <script src="{% static 'transfer.js'  %}"></script>
 
 </body>
 

@@ -2,11 +2,13 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
+from django.http import JsonResponse
 
 import secrets
 from .models import User_Account,Transcations
 from django.contrib.auth import login
 from django.contrib.auth import logout
+import json
 from decimal import Decimal
 # Create your views here.
 @csrf_exempt
@@ -106,6 +108,10 @@ def Transfer(request):
         user_account= User_Account.objects.get(User_id=user)
         if len(to_account)<1:
             return render(request,'Transfer.html',context={'error':'Account does not Exist'})
+        if user_account <= transfer:
+            return render(request,'Transfer.html',context={'error':'Transaction is Failed due to  Insufficient  Balance'})
+        if transfer <= 0:
+            return render(request,"Transfer.html",context={"error":"Enter a valid amount"})
         to_account = to_account.first()
         print(to_account)
         new_transcations=Transcations.objects.create(
@@ -237,4 +243,31 @@ def Home(request):
     }
     print(account)
     return render(request,'Homepage.html',context=account)
-    
+
+@csrf_exempt    
+def check_acc_number(request):
+    if request.method =='POST':
+        data = json.loads(request.body.decode("utf-8"))
+        acc_no = data.get('accountnumber')
+        user=request.user
+        # filter accounts with account number
+        user_account = User_Account.objects.filter(
+            Account_number=acc_no,
+            is_active=True
+        ).first()
+        print("Found account:",user_account)
+        # check at least account is filtered
+        if user_account:
+            username=user_account.User_id.username
+            print(username)
+            return JsonResponse({"success": True,"username":username,"accountnumber":user_account.Account_number})
+   
+        return JsonResponse({
+                                "success":False,
+                            "message":"Account not found"
+                            })
+
+
+
+       
+

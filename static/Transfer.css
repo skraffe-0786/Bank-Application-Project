@@ -43,6 +43,7 @@ body{
 #select:focus{
     color: #fff;
 }
+
 #btn{
     display: flex;
     justify-content: center;
@@ -157,4 +158,21 @@ ul li a:hover{
     color: #fff;
     border-radius: 15px;
     width: 15vw;
+}
+#search{
+    padding: 10px;
+    height: 35px;
+    width: 40px;
+    background-color: #2b3049;
+    color: white;
+}
+#too_account{
+    width: 62vw;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #080B1F;
+    color: whitesmoke;
+}
+#too_account:focus{
+    color: #fff;
 }

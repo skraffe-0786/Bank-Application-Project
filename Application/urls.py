@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from BANK.views import Deposit,Withdraw,Transfer,View_Transaction,Register,Login,Home,logout_view
+from BANK.views import Deposit,Withdraw,Transfer,View_Transaction,Register,Login,Home,logout_view,check_acc_number
 from BANK.views import Check_Balance
 
 urlpatterns = [
@@ -31,5 +31,6 @@ urlpatterns = [
     path('',Register),
     path('login',Login,name="login-page"),
     path('Home-page',Home,name="Home"),
-    path('logout',logout_view,name="logout")
+    path('logout',logout_view,name="logout"),
+    path('recv_acc',check_acc_number, name="check_acc_number")
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

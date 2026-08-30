@@ -108,17 +108,14 @@ def Transfer(request):
         user_account= User_Account.objects.get(User_id=user)
         if len(to_account)<1:
             return render(request,'Transfer.html',context={'error':'Account does not Exist'})
-        if user_account <= transfer:
-            return render(request,'Transfer.html',context={'error':'Transaction is Failed due to  Insufficient  Balance'})
-        if transfer <= 0:
-            return render(request,"Transfer.html",context={"error":"Enter a valid amount"})
+      
         to_account = to_account.first()
         print(to_account)
         new_transcations=Transcations.objects.create(
             Amount=transfer,
             Type='transfer',
             From_Acc=user_account,
-            To_Acc=to_account,
+            To_Acc=to_account, 
             Remaning_Balance=transfer,
             User_id=user
             

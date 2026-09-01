@@ -108,6 +108,12 @@ def Transfer(request):
         user_account= User_Account.objects.get(User_id=user)
         if len(to_account)<1:
             return render(request,'Transfer.html',context={'error':'Account does not Exist'})
+        own_account=User_Account.objects.filter(
+            User_id=request.user,
+            Account_number=to_acc
+        ).exists()
+        if own_account:
+            return render(request,'Transfer.html', context={'error':'You cannot Transfer into your own Account'})
       
         to_account = to_account.first()
         print(to_account)

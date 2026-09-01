@@ -250,7 +250,8 @@ def check_acc_number(request):
         # filter accounts with account number
         user_account = User_Account.objects.filter(
             Account_number=acc_no,
-            is_active=True
+            
+          
         ).first()
         print("Found account:",user_account)
         # check at least account is filtered
@@ -259,10 +260,6 @@ def check_acc_number(request):
             print(username)
             return JsonResponse({"success": True,"username":username,"accountnumber":user_account.Account_number})
    
-        return JsonResponse({
-                                "success":False,
-                            "message":"Account not found"
-                            })
 
 
 

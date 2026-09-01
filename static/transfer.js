@@ -20,12 +20,12 @@ btn.onclick=e=>{
     .then(data => {
         console.log(data);
         if (data.success){
-            document.getElementById("receiver_name").innerText
+            document.getElementById("receiver_name").innerText=
              
-            "Account Holder:" +data.username.Current_Balance;
+            "Account Holder:" +data.username;
         }
         else{
-            document.getElementById("receiver_name").innerText
+            document.getElementById("receiver_name").innerText=
 
             "Account not found";
         }

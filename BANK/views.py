@@ -10,6 +10,12 @@ from django.contrib.auth import login
 from django.contrib.auth import logout
 import json
 from decimal import Decimal
+
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializers import AccountSerializer
+from  rest_framework import status
+from .import views 
 # Create your views here.
 @csrf_exempt
 def Deposit(request):
@@ -268,6 +274,89 @@ def check_acc_number(request):
    
 
 
+@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+def accounts(request, id=None):
+
+    # GET
+    if request.method == 'GET':
+        account = User_Account.objects.all()
+        serializer = AccountSerializer(account, many=True)
+        return Response(serializer.data)
+
+    # POST
+    elif request.method == 'POST':
+        serializer = AccountSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # PUT / PATCH
+    elif request.method in ['PUT', 'PATCH']:
+
+        # Find the account first
+        try:
+            account = User_Account.objects.get(id=id)
+        except User_Account.DoesNotExist:
+            return Response(
+                {"error": "Account not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+      
+
+        # PUT
+        if request.method == 'PUT':
+            serializer = AccountSerializer(
+                account,
+                data=request.data
+            )
+
+        # PATCH
+        elif request.method == 'PATCH':
+            serializer = AccountSerializer(
+                account,
+                data=request.data,
+                partial=True
+            )
+            # DELETE
+    elif request.method == 'DELETE':
+
+        try:
+            account = User_Account.objects.get(id=id)
+        except User_Account.DoesNotExist:
+            return Response(
+                {"error": "Account not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        account.delete()
+        return Response(
+            {"message": "Account deleted successfully"},
+            status=status.HTTP_200_OK
+        )
+      
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+
+    return Response(
+        serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+
+
+    
 
        
+
+
 

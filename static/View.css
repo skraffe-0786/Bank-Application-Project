@@ -93,18 +93,25 @@ ul li a:hover{
     display: flex;
 }
 #btnn{
+ width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 12px 15px;
+
+    background: transparent;
+    border: none;
     color: white;
-      display:flex;
-    align-items:center;
-    gap:15px;
-    padding:10px;
-    border-radius: 10px;
-    
-    font-size:18px;
-    width: 15vw;
-    margin: 5px 18px ;
-    background-color: #08002e;
-    text-align: center;
+
+    font-size: 16px;
+    font-family: inherit;
+    text-align: left;
+
+    cursor: pointer;
+    border-radius: 8px;
+
+    transition: 0.3s;
 }
 #btnn:hover{
     border-radius: 10px;

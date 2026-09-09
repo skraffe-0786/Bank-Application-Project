@@ -33,21 +33,33 @@ h3{
 
 
 body{
-    background:#f5f7fb;
+    background:#1c4baa;
 }
 
-.dash{
-    width:20vw;
-    height:100vh;
+.pages {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
     
-    color:white;
-    position:fixed;
-    left:0;
-    top:0;
-    display:flex;
-    flex-direction:column;
-  
-
+}
+#background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.dash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 270px;
+    height: 100vh;
+    z-index: 10;
+    
 }
 
 
@@ -56,6 +68,7 @@ body{
     font-weight:bold;
     padding:30px;
     border-bottom:1px solid rgb(255, 255, 255);
+    position: relative;
     
     color: white;
 
@@ -90,7 +103,17 @@ ul li a{
 ul li a:hover{
     background:purple;
 }   
-
+.lot{
+    color:white;
+    
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    border-radius:10px;
+    font-size:18px;
+    align-items: center;
+}
 
 .dash{
     display: flex;
@@ -98,22 +121,33 @@ ul li a:hover{
 
 
 #btnn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 12px 15px;
+
+    background: transparent;
+    border: none;
     color: white;
-      display:flex;
-    align-items:center;
-    gap:15px;
-    padding:10px;
-    border-radius: 10px;
-    margin-top: 25px;
-    font-size:18px;
-    width: 15vw;
-    margin: 5px 18px ;
-    background-color: #08002e;
-    text-align: center;
+
+    font-size: 16px;
+    font-family: inherit;
+    text-align: left;
+
+    cursor: pointer;
+    border-radius: 8px;
+
+    transition: 0.3s;
+    
 }
 #btnn:hover{
     border-radius: 10px;
     background-color: purple;
+}
+#btnn i {
+    font-size: 20px;
 }
 
 
@@ -329,7 +363,7 @@ h3{
     left: 0px;
 
      background:rgba(255,255,255,0.15);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
 
      
 }

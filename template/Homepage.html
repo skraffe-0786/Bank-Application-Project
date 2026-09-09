@@ -12,73 +12,76 @@
 
 <body>
     <div class="pages">
-        <img src="{% static 'profile.png'  %}" id="background-image">
+        <img src="{% static 'bank.png.jpeg'  %}" id="background-image">
 
         <div class="dash">  
-            <div class="board">
-                <i class="bi bi-bank" id="icon"></i>
-                <span>MyBank</span>
+            <div class="box">
+
+                <div class="board">
+                    <i class="bi bi-bank" id="icon"></i>
+                    <span>MyBank</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="http://127.0.0.1:8000/Home-page">
+                            <i class="bi bi-house-door"></i>
+                            Dashboard
+                            
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:8000/Deposit">
+                            <i class="bi bi-download"></i>
+                            Deposit
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:8000/Withdraw">
+                            <i class="bi bi-upload"></i>
+                            Withdraw
+                            
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:8000/Transfer">
+                            <i class="bi bi-arrow-left-right"></i>
+                            Transfer
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:8000/CheckBalance">
+                            <i class="bi bi-wallet2"></i>
+                            Check Balance
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:8000/view">
+                            <i class="bi bi-receipt"></i>
+                            view Transactions
+                            
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <div class="lot">
+                                <button type="submit" id="btnn">
+                                    <i class="bi bi-box-arrow-left"></i>
+                                    Logout
+                                </button>
+                            </div>
+                        </form>
+                    </li>
+                    
+                </ul>
+                
             </div>
-            <ul>
-                <li>
-                    <a href="http://127.0.0.1:8000/Home-page">
-                        <i class="bi bi-house-door"></i>
-                        Dashboard
-
-
-                    </a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/Deposit">
-                        <i class="bi bi-download"></i>
-                        Deposit
-
-                    </a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/Withdraw">
-                        <i class="bi bi-upload"></i>
-                        Withdraw
-
-
-                    </a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/Transfer">
-                        <i class="bi bi-arrow-left-right"></i>
-                        Transfer
-
-                    </a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/CheckBalance">
-                        <i class="bi bi-wallet2"></i>
-                        Check Balance
-
-                    </a>
-                </li>
-                <li>
-                    <a href="http://127.0.0.1:8000/view">
-                        <i class="bi bi-receipt"></i>
-                        view Transactions
-
-
-                    </a>
-                </li>
-                <li>
-                    <form method="post" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <div class="lot">
-                            <button type="submit" id="btnn">
-                                <i class="bi bi-box-arrow-left"></i>
-                                Logout
-                            </button>
-                        </div>
-                    </form>
-                </li>
-
-            </ul>
-            <img src="{% static 'image1.png' %}" id="image">
         </div>
 
 

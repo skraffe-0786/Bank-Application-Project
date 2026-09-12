@@ -16,30 +16,87 @@
             <div class="register">
                 <img src="{% static 'bank.png.jpeg' %}" id="image">
                 <div class="form">
+
+
                     {% csrf_token %}
+
                     <div class="page">
-                        <p id="heading">REGISTRATION FORM :</p>
+                        <div class="bank_name">
+                            <b class="bi bi-bank"></b>
+                            My Bank
+                        </div>
+                        <div class="head">
+                            <p>Create Your Account</p>
+                            <p>Register To Access Your Bank Account</p>
+                        </div>
+
                         <p>First Name :</p>
-                        <input type="text" required placeholder="enter First name" id="first" name="firstname">
+                        <input type="text" required placeholder="enter First name" id="first_name" name="firstname">
                         <p>Last Name :</p>
-                        <input type="text" required placeholder="enter Last name" id="first" name="lastname">
+                        <input type="text" required placeholder="enter Last name" id="first_name" name="lastname">
                         <p>Email :</p>
-                        <input type="email" required placeholder="enter email" id="first" name="email">
+                        <div class="input-box">
+                            <i class="bi bi-envelope"></i>
+                            <input type="email" required placeholder="enter email" id="first" name="email">
+                        </div>
                         <p>Password :</p>
-                        <input type="password" required placeholder="enter password" id="first" name="password">
+                        <div class="password">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" required placeholder="enter password" id="password" name="password">
+                            <i class="bi bi-eye-fill" id="togglepassword" onclick="togglepassword()"></i>
+
+
+
+                        </div>
                         <p>Confirm Password :</p>
-                        <input type="password" required placeholder="enter confirm Password" id="first"
-                            name="confirm_password">
+                        <div class="input-box">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" required placeholder="enter confirm Password" id="first"
+                                name="confirm_password">
+                        </div>
+                        <p id="check_box"><input type="checkbox" required id="box"> I Have Read And Agree To The <a
+                                href="#" id="terms">Terms And Conditions </a></p>
+
+
                         <div class="error">
                             {{error}}
                         </div>
-                        <button type="submit" id="btn">REGISTER NOW</button>
+                        {% if errors %}
+                        <div class="error-box">
+                            {% for error in errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <button type="submit" id="btn" class="bi bi-person-plus">REGISTER NOW</button>
+
+                        <p id="foo">Already have an account <a href="http://127.0.0.1:8000/login" class="foot">? Login
+                            </a></p>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </form>
-    </div>
+    <script>
+        const password = document.getElementById("password");
+        const eye = document.getElementById("togglepassword");
+
+           eye.addEventListener("click", function () {
+                if (password.type === "password") {
+                    password.type = "text";
+                    eye.classList.remove("bi-eye-fill");
+                    eye.classList.add("bi-eye-slash-fill");
+                } else {
+                    password.type = "password";
+                    eye.classList.remove("bi-eye-slash-fill");
+                    eye.classList.add("bi-eye-fill");
+                }
+            })
+    </script>
+
 
 
 </body>

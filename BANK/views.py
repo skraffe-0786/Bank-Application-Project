@@ -10,6 +10,7 @@ from django.contrib.auth import login
 from django.contrib.auth import logout
 import json
 from decimal import Decimal
+import re
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -175,6 +176,21 @@ def Login(request):
 
         if len(user) < 1:
             return render(request, 'login.html',context={'error':'invalid username'})
+        if User.objects.filter(username=username).exists():
+                return render(request,"Register.html",context={"error":"Email already existis"})
+        errors=[]
+        if len(password)<8 :
+                errors.append("Password  must be  at least 8 characters")
+        if not re.search(r"[A-Z]", password):
+                errors.append("Password must contain at least  one Uppercase Letter.")
+        if not re.search(r"[a-z]", password):
+                errors.append("Password must contain at least one Lowercase Letter .")
+        if not re.search(r"[0-9]",password):
+                errors.append("Password must  contain  at least one number .")
+        if not re.search(r"[@#$!*%&]",password):
+                errors.append("password must contain at least one special  character such as @,#,$,!,*,&")
+        if errors:
+                return  render(request, 'Register.html',context={"errors":errors})
 
         user = user[0]
         check=user.check_password(password)
@@ -224,6 +240,20 @@ def Register(request):
         return render(request,"Register.html",context={"error":"Email already existis"})
     if (password!=confirm_password):
         return render(request,'Register.html',context={'error':'Password  should be same as confirm Password'})
+    errors=[]
+    if len(password)<8 :
+        errors.append("Password  must be  at least 8 characters")
+    if not re.search(r"[A-Z]", password):
+        errors.append("Password must contain at least  one Uppercase Letter.")
+    if not re.search(r"[a-z]", password):
+        errors.append("Password must contain at least one Lowercase Letter .")
+    if not re.search(r"[0-9]",password):
+        errors.append("Password must  contain  at least one number .")
+    if not re.search(r"[@#$!*%&]",password):
+        errors.append("password must contain at least one special  character such as @,#,$,!,*,&")
+    if errors:
+        return  render(request, 'Register.html',context={"errors":errors})
+
     number="".join(str(secrets.randbelow(10))for i in range(14))
     new_user=User.objects.create(username=username,password=password) 
     new_user.set_password(password)

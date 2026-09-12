@@ -17,33 +17,66 @@
 
         <div class="page">
             <img src="{% static 'bank.png.jpeg' %}" id="image">
-            
+
             <div class="form">
+
                 <div class="login">
-                    <b>LOGIN FORM :</b>
+                    <div class="bank_name">
+                        <b class="bi bi-bank"></b>
+                        My Bank
+                    </div>
+                    <div class="head">
+                        <p>Welcome Back !</p>
+                        <p>Login to access your account</p>
+                    </div>
 
                     <p>Email :</p>
-                    
-                    <i class="bi bi-envelope" id=" email"></i>
-                    <input   class="bi bi-envelope"       type="email" placeholder="enter email" id="mail" required name="email">
+                    <div class="input-box">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" placeholder="enter email" id="mail" required name="email">
+
+                    </div>
                     <p>Password :</p>
-                    <input type="password" required placeholder="enter correct password" id="mail" name="password">
+                    <div class="password">
+                        <i class="bi bi-lock"></i>
+                        <input type="password" required placeholder="enter correct password" id="password" name="password"
+                            >
+                        <i class="bi bi-eye-fill" id="togglepassword" onclick="togglepassword()"></i>
+                    </div>
+
+                    <a href="#" id="forgot">Forgot password ?</a>
                     <div class="error">
                         {{error}}
                     </div>
-                    <button type="submit" id="btn">LOGIN NOW</button>
+                    <button type="submit" id="btn" class="bi bi-lock-fill">LOGIN NOW</button>
                     <p id="or">or</p>
                     <div class="foot">
-                        <a href="http://127.0.0.1:8000/" id="create"> ?  Create Account</a>
-                    </div>  
-                   
+                        <a href="http://127.0.0.1:8000" id="create"> ? Create Account</a>
+                    </div>
+
 
                 </div>
-                
+
             </div>
         </div>
 
     </form>
+    <script>
+            const password = document.getElementById("password");
+            const eye = document.getElementById("togglepassword");
+
+            eye.addEventListener("click", function () {
+                if (password.type === "password") {
+                    password.type = "text";
+                    eye.classList.remove("bi-eye-fill");
+                    eye.classList.add("bi-eye-slash-fill");
+                } else {
+                    password.type = "password";
+                    eye.classList.remove("bi-eye-slash-fill");
+                    eye.classList.add("bi-eye-fill");
+                }
+            })
+    </script>
 
 </body>
 

@@ -14,9 +14,10 @@ import re
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import AccountSerializer
+from .serializers import AccountSerializer,TransferSerializer
 from  rest_framework import status
 from .import views 
+from rest_framework.views import APIView
 
 import random
 # Create your views here.
@@ -358,6 +359,7 @@ def accounts(request, id=None):
             {"message": "Account deleted successfully"},
             status=status.HTTP_200_OK
         )
+    
       
 
     if serializer.is_valid():
@@ -471,4 +473,18 @@ def ResetPassword(request):
     return render(request,'ResetPassword.html')    
 
 
-
+class TransferView(APIView):
+    def post(self,request):
+        serializer=TransferSerializer(data=request.data)
+        if serializer.is_valid():
+            return Response(
+                {
+                    "message":"Transfer data is valid",
+                    "data":serializer.validated_data
+                },
+                status=status.HTTP_200_OK
+            )
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )

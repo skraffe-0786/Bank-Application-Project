@@ -12,3 +12,30 @@ class AccountSerializer(serializers.ModelSerializer):
                 "Balance  cannot be  negative "
             )
         return value
+
+class TransferSerializer(serializers.Serializer):
+
+    sender = serializers.CharField()
+    receiver = serializers.CharField()
+    amount = serializers.DecimalField(
+        max_digits=100,
+        decimal_places=1
+    )
+
+    def validate(self, attrs):
+
+        sender = attrs["sender"]
+        receiver = attrs["receiver"]
+        amount = attrs["amount"]
+
+        if sender == receiver:
+            raise serializers.ValidationError(
+                "You cannot transfer to your own account."
+            )
+
+        if amount <= 0:
+            raise serializers.ValidationError(
+                "Transfer amount must be greater than zero."
+            )
+
+        return attrs

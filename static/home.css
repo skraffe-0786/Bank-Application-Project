@@ -69,6 +69,7 @@ body{
     padding:30px;
     border-bottom:1px solid rgb(255, 255, 255);
     position: relative;
+    text-shadow: 0 0 20px rgb(213, 206, 206),0 0 20px rgb(217, 217, 217);
     
     color: white;
 
@@ -181,14 +182,14 @@ a{
 }
 .icon i{
     font-size: 20px;
-    color: #f5f7fb;
+    color: #ffffff;
 }
 
   
     
 
 .board i{
-    color: #A7AEC5;
+    color: #ffffff;
 }
 .board li:first-child i{
     color: #2563EB;
@@ -379,6 +380,7 @@ h3{
  border-radius: 10px;
  padding: 30px 50px ;
  height: 20vh;
+ color: white;
 
  
 
@@ -399,15 +401,7 @@ h3{
 .details{
     width: 100%;
 }
-.details-image{
-    width:78vw;
-    opacity: 0.4;
-    position: absolute;
-    right: -800px;
-    bottom: -170px;
-    z-index: -1;
-    border-radius: 10px;
-}
+
 .cars .right{
     text-align: right;
     z-index: 2;
@@ -425,28 +419,28 @@ h3{
     font-size: 1.3rem;
     color: #2563ed;
     background: #dbe7fd;
-    padding: 8px;
+    padding: 5px;
     border-radius: 50%;
 }
 .info .label{
     font-size: 0.8rem;
-    color: #6b7280;
+    color: #cad4ea;
     margin: 0;
 }
 .info .value{
-    font-weight: 600;
-    color: #0b1f4d;
+    font-weight: bold;
+    color: #ffffff;
     margin: 0;
 }
 #wel{
     font-size: 1.1rem;
-    color: #4a5568;
-    font-weight: 400;
+    color: #ffffff;
+    font-weight: 600;
     margin: 0;
 }
 #user{
     font-size: 2rem;
-    color: #0b1f4d;
+    color: #000000;
     display: block;
     margin: 4px 0 10px;
 }
@@ -573,8 +567,8 @@ h3{
     
 }
 #balance{
-    color: #08002e;
-    font-size: 20px;
+    color: #ffffff;
+    font-size: 30px;
     
 }
 #pro{
@@ -595,4 +589,11 @@ h3{
     object-fit: cover;
     object-position: center;
     z-index: 0;
+}
+#wallet{
+    background: white;
+    color: #123cba;
+    padding: 8px;
+    border-radius: 90%;
+    font-weight: bold;
 }

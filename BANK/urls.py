@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('accounts/', views.accounts,name='accounts'),
-    path('accounts/<int:id>/', views.accounts, name='account-details')
+    path('accounts/<int:id>/', views.accounts, name='account-details'),
+    path('forgotpassword',views.Forgotpassword, name='forgot')
 ]

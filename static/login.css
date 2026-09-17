@@ -128,6 +128,10 @@ a{
     display: flex;
     justify-content: end;
     font-size: 20px;
+    
+}
+#forgot:hover{
+    text-decoration: underline;
 }
 .input-box i{
     position: absolute;
@@ -154,8 +158,9 @@ a{
     justify-content: center;
     font-size: 30px;
     gap: 10px;
-    color: #000000;
+    color: #ffffff;
     font-weight: 800;
+    text-shadow: 0 0 20px rgb(213, 206, 206),0 0 20px rgb(217, 217, 217);
     
 }
 .password {

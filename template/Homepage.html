@@ -18,7 +18,7 @@
             <div class="box">
 
                 <div class="board">
-                    <i class="bi bi-bank" id="icon"></i>
+                    <i class="bi bi-bank2" id="icon"></i>
                     <span>MyBank</span>
                 </div>
                 <ul>
@@ -96,7 +96,7 @@
                             <h4 id="wel">Welcome Back ,</h4>
                             <b id="user">{{ username }}</b>
                             <p>Manage your account and transactions securely and easily</p>
-                            <img src="{% static 'details.jpeg'  %} " class="details-image">
+                            
                         </div>
 
                         <div class="right">
@@ -116,13 +116,14 @@
                                 </div>
                             </div>
                             <div class="info">
+                            
+                                <i class="bi bi-wallet2" id="wallet"></i>
+                                <div >
+                                    <p class="label">Current Balance</p>
+                                    <p class="value" id="balance">{{ Current_Balance }}</p>
+                                </div>
 
-
-                            </div>
-                            <div>
-                                <p class="label">Current Balance</p>
-                                <p class="value" id="balance">{{ Current_Balance }}
-                                </p>
+                                
                             </div>
                         </div>
                     </div>

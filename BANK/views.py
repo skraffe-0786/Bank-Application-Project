@@ -17,6 +17,8 @@ from rest_framework.decorators import api_view
 from .serializers import AccountSerializer
 from  rest_framework import status
 from .import views 
+
+import random
 # Create your views here.
 @csrf_exempt
 def Deposit(request):
@@ -172,31 +174,16 @@ def Login(request):
         data=request.POST
         username=data.get('email')
         password=data.get('password')
-        user = User.objects.filter(username=username)
+        user = User.objects.filter(username=username).first()
 
-        if len(user) < 1:
+        if not user:
             return render(request, 'login.html',context={'error':'invalid username'})
-        if User.objects.filter(username=username).exists():
-                return render(request,"Register.html",context={"error":"Email already existis"})
-        errors=[]
-        if len(password)<8 :
-                errors.append("Password  must be  at least 8 characters")
-        if not re.search(r"[A-Z]", password):
-                errors.append("Password must contain at least  one Uppercase Letter.")
-        if not re.search(r"[a-z]", password):
-                errors.append("Password must contain at least one Lowercase Letter .")
-        if not re.search(r"[0-9]",password):
-                errors.append("Password must  contain  at least one number .")
-        if not re.search(r"[@#$!*%&]",password):
-                errors.append("password must contain at least one special  character such as @,#,$,!,*,&")
-        if errors:
-                return  render(request, 'Register.html',context={"errors":errors})
+        if not user.check_password(password):
+            return render(request,'login.html', context={"error":"Invalid User or Password"})
 
-        user = user[0]
-        check=user.check_password(password)
+      
 
-        if not check:
-            return render(request,'login.html',context={'error':'invalid password'})
+
         login(request, user)
         return redirect("Home")
 
@@ -382,11 +369,106 @@ def accounts(request, id=None):
             status=status.HTTP_400_BAD_REQUEST
         )
 
+@csrf_exempt
+def Forgotpassword(request):
 
+    if request.method == 'POST':
 
-    
+        email = request.POST.get("email")
+        
 
-       
+        print("EMAIL ENTERED:", email)
+
+        print(
+            "REGISTERED USERNAMES:",
+            list(User.objects.values_list("username", flat=True))
+        )
+
+        if User.objects.filter(username__iexact=email).exists():
+
+            otp = random.randint(100000, 999999)
+
+            request.session['reset_username'] = email
+            request.session['reset_otp'] = otp
+
+            print("OTP:", otp)
+
+            return redirect("verify_otp")
+
+        else:
+
+            print("EMAIL NOT FOUND")
+
+            return render(
+                request,
+                'ForgotPassword.html',
+                {
+                    "error": "Email is not registered"
+                }
+            )
+
+    return render(request, 'ForgotPassword.html')
+
+@csrf_exempt
+def Verify_OTP(request):
+    if request.method == 'POST':
+        entered_otp=request.POST.get("otp")
+        stored_otp=request.session.get('reset_otp')
+        username=request.session.get("reset_username")
+
+        print("ENTERED OTP:", entered_otp)
+        print("STORED OTP:", stored_otp)
+        print("RESET USERNAME:", username  )
+        if str(entered_otp) == str(stored_otp):
+
+            # OTP is correct
+            request.session['otp_verified'] = True
+
+            return redirect("reset_password")
+
+        else:
+
+            return render(
+                request,
+                'Verify_Otp.html',
+                {
+                    "error": "Invalid OTP. Please try again."
+                }
+            )
+    return render(request, 'Verify_Otp.html')
+
+@csrf_exempt
+def ResetPassword(request):
+    if request.method == 'POST':
+        new_password= request.POST.get("new_password")
+        confirm_password=request.POST.get("confirm_password")
+        if new_password != confirm_password:
+            return render(request,'ResetPassword.html', context={"error":"Password do not match"})
+        messages.success(request,"Your password has been changed successfully")
+        errors=[]
+        if len(new_password) < 8 :
+                errors.append("Password  must be  at least 8 characters")
+        if not re.search(r"[A-Z]", new_password):
+                errors.append("Password must contain at least  one Uppercase Letter.")
+        if not re.search(r"[a-z]", new_password):
+                errors.append("Password must contain at least one Lowercase Letter .")
+        if not re.search(r"[0-9]",new_password):
+                errors.append("Password must  contain  at least one number .")
+        if not re.search(r"[@#$!*%&]",new_password):
+                errors.append("password must contain at least one special  character such as @,#,$,!,*,&")
+        if errors:
+                return  render(request, 'ResetPassword.html',context={"errors":errors})
+        username = request.session.get('reset_username')
+
+        if not username:
+            return redirect('forgot')
+        user=User.objects.get(username=username)
+        user.set_password(new_password)
+        user.save()
+        del request.session["reset_username"]
+        print(new_password)
+        return redirect("login-page")
+    return render(request,'ResetPassword.html')    
 
 
 

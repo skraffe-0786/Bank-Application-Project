@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from BANK.views import Deposit,Withdraw,Transfer,View_Transaction,Register,Login,Home,logout_view,check_acc_number
 from BANK.views import Check_Balance
 from BANK.views import accounts
+from BANK.views import Verify_OTP,ResetPassword
+
 
 
 
@@ -38,6 +40,9 @@ urlpatterns = [
     path('Home-page',Home,name="Home"),
     path('logout',logout_view,name="logout"),
     path('recv_acc',check_acc_number, name="check_acc_number"),
+    path('verify_OTP', Verify_OTP, name="verify_otp"),
+    path('Reset',ResetPassword, name="reset_password")
+    
    
 
 

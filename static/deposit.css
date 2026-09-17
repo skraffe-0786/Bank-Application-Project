@@ -95,6 +95,7 @@ a{
     font-weight:bold;
     padding:30px;
     border-bottom:1px solid rgb(0, 19, 194);
+    text-shadow: 0 0 20px rgb(213, 206, 206),0 0 20px rgb(217, 217, 217);
 }
 
 .board i{
